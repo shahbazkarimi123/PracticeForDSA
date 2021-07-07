@@ -1,34 +1,32 @@
 #include<iostream>
 using namespace std;
-void reverseArray(int arr[],int start,int end)
+void reverseRecursion(int arr[],int start,int end)
 {
-    while(start<end)
+    if(start>=end)
     {
-        int temp=arr[start];
-        arr[start]=arr[end];
-        arr[end]=temp;
-        start++;
-        end--;
+        return;
     }
+    int temp=arr[start];
+    arr[start]=arr[end];
+    arr[end]=temp;
+    reverseRecursion(arr,start+1,end-1);
 
 }
 void display(int arr[],int end)
 {
+    
     for(int i=0;i<end;i++)
     {
         cout<<arr[i]<<" ";
-
     }
     cout<<endl;
-
 }
-
 int main()
 {
-    int arr[]={8,9,7,2,3,9};
+    int arr[]={7,4,3,2,9};
     int size=sizeof(arr)/sizeof(arr[0]);
     display(arr,size);
-    reverseArray(arr,0,size-1);
+    reverseRecursion(arr,0,size-1);
     display(arr,size);
     return 0;
 }
